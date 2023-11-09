@@ -1,0 +1,39 @@
+# Define a global platform for your project
+platform :ios, '12.0'
+
+source 'https://bitbucket.org/appsppl/appspeoplepodspecs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+inhibit_all_warnings!
+
+pod 'SwiftLint'
+
+target 'AppsPeopleiOS_Example' do
+  pod 'AppsPeopleiOS', :path => '../'
+  pod 'AppsPeopleiOS/Extras', :path => '../'
+
+  target 'AppsPeopleiOS_Tests' do
+    inherit! :search_paths
+  end
+end
+
+post_install do |installer|
+  # Temporary hack to force Swift 5 for some pods
+  installer.pods_project.targets.each do |target|
+    if ['Toucan'].include? target.name
+      puts "Fixing SWIFT_VERSION for #{target.name}"
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5.0'
+      end
+    end
+  end
+  # Let the project define the deployment target of pods
+  # https://www.jessesquires.com/blog/2020/07/20/xcode-12-drops-support-for-ios-8-fix-for-cocoapods/
+  puts "Cleaning IPHONEOS_DEPLOYMENT_TARGET from pods build settings"
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+    end
+  end
+end
