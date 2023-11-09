@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'AppsPeopleiOS'
-    s.version          = '0.4.7'
+    s.version          = '0.0.1'
     s.summary          = 'Internal iOS framework of Apps People'
     s.module_name      = 'AppsPeopleiOS'
 
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
     s.homepage         = 'https://github.com/Babluadroitminds/MyFirstPrivateLib'
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
-    s.author           = { 'Olivier Voyer' => 'olivier@appspeople.com.au' }
+    s.author           = { 'Babluadroitminds' => 'bablu.snair@adroitminds.com' }
     s.source           = { :git => 'https://github.com/Babluadroitminds/MyFirstPrivateLib.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
