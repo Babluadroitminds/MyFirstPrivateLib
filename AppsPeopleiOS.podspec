@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'AppsPeopleiOS'
-    s.version          = '0.0.1'
+    s.version          = '0.4.7'
     s.summary          = 'Internal iOS framework of Apps People'
     s.module_name      = 'AppsPeopleiOS'
 
